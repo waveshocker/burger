@@ -1,38 +1,48 @@
-<h1>Cats!</h1>
+<div class="container">
+    <div class="row col title">
+        <div class="col s12">
+            <h1>Eat Burger!</h1>
+        </div>
+    </div>
 
-<h2>Cats that are not sleepy!</h2>
+    <hr>
 
-<ul>
-  {{#each cats}}
-    {{#unless sleepy}}
-      {{> cats/cat-block sleep=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
+    <div class="row devoured-or-not">
+        <div class="col s12 l6" id="notDevoured">
+            <h4>Burgers Menu</h4>
+            <ul>
+                {{#each burgers}}
+                {{#unless this.devoured}}
+                {{> burgers/burger-block devoured=false}}
+                {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
 
-<h2>Cats that are sleepy!</h2>
+        <div class="col s12 l6" id="devoured">
+            <h4>Burgers Devoured!</h4>
+            <ul>
+                {{#each burgers}}
+                {{#if this.devoured}}
+                {{> burgers/burger-block devoured=true}}
+                {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
 
-<ul>
-  {{#each cats}}
-    {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
-    {{/if}}
-  {{/each}}
-</ul>
+    <hr>
 
-<h2>Add a Cat</h2>
-<form class="create-form">
-
-  <div class="form-group">
-    <label for="ca">Cat Name:</label>
-    <input type="text" id="ca" name="name">
-  </div>
-
-  <div class="form-group">
-    <label for="sleepy">Sleepy?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
-    <input type="radio" name="sleepy" value="0"> Awake
-  </div>
-
-  <button type="submit">Add Cat</button>
-</form>
+    <div class="row create-burger">
+        <div class="col s12">
+            <h4>Add Your Own Burger</h4>
+            <form>
+                <div class="form-group">
+                    <label class="addNewBurger" for="burgerName">Burger Name: </label>
+                    <input type="text" id="burgerName" name="name">
+                </div>
+                <button class="add-burger" id="burgerButton" type="submit">ADD BURGER</button>
+            </form>
+        </div>
+    </div>
+</div>
